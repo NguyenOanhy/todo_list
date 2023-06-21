@@ -93,7 +93,7 @@ function App() {
 
   const filteredTasks = tasks.filter(task =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ).sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
   return (
     <div className='container'>
