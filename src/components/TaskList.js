@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskItem from './TaskItem';
-import './TaskList.css'
+import './styles/TaskList.css'
 
 function TaskList({ tasks, onDeleteTask, onCheckboxChange, onFormSubmit }) {
   return (

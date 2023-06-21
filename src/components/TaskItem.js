@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TaskForm from './TaskForm';
-import './TaskItem.css';
+import './styles/TaskItem.css';
 
 function TaskItem({ task, onDeleteTask, onCheckboxChange, onFormSubmit }) {
   const [showDetails, setShowDetails] = useState(false);
