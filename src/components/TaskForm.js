@@ -34,7 +34,6 @@ function TaskForm({ task, onFormSubmit }) {
   return (
     <form className='TaskForm' onSubmit={handleSubmit}>
       <div className='input-group'>
-        {/* <label htmlFor='title'>Title:</label> */}
         <input
           type='text'
           id='title'
@@ -55,7 +54,7 @@ function TaskForm({ task, onFormSubmit }) {
         />
       </div>
       <div className='Date-Pri'>
-        <div className='input-group'>
+        <div className='input-group dueDate'>
           <label htmlFor='dueDate'>Due Date</label>
           <input
             type='date'
@@ -66,7 +65,7 @@ function TaskForm({ task, onFormSubmit }) {
             min={new Date().toISOString().slice(0, 10)}
           />
         </div>
-        <div className='input-group'>
+        <div className='input-group priority'>
           <label htmlFor='priority'>Priority</label>
           <select
             id='priority'
@@ -80,7 +79,7 @@ function TaskForm({ task, onFormSubmit }) {
           </select>
         </div>
       </div>
-      <button type='submit'>{task ? 'Update Task' : 'Add Task'}</button>
+      <button type='submit'>{task ? 'Update' : 'Add'}</button>
     </form>
   );
 }

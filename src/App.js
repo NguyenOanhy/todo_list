@@ -104,21 +104,24 @@ function App() {
         </div>
       </div>
       <div className='right'>
-        <Header title='Todo List'/>
+        <Header title='To Do List'/>
         <div className="list-container">
-          <div className="search-container">
-            <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearch} />
+          <div>
+            <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearch} className="search-container"/>
+            <TaskList
+              tasks={filteredTasks}
+              onDeleteTask={handleDeleteTask}
+              onCheckboxChange={handleCheckboxChange}
+              onFormSubmit={handleUpdateTask}
+            />
           </div>
-          <TaskList
-            tasks={filteredTasks}
-            onDeleteTask={handleDeleteTask}
-            onCheckboxChange={handleCheckboxChange}
-            onFormSubmit={handleUpdateTask}
-          />
           {selectedTasks.length > 0 && (
             <div className="bulk-actions">
-              <button disabled>Done</button>
-              <button onClick={handleBulkDelete}>Remove</button>
+              <div>Bulk Action:</div>
+              <div>
+                <button className='done'>Done</button>
+                <button onClick={handleBulkDelete} className='remove'>Remove</button>
+              </div>
             </div>
           )}
         </div>

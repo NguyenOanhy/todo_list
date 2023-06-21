@@ -1,40 +1,47 @@
-.TaskItem button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #f6f6f6;
-    border: 1px solid #ddd;
-    color: #333;
-    font-size: 1.2rem;
-  }
-  
-  .TaskItem button.edit {
-    margin-right: 10px;
-  }
-  
-  .TaskItem button.edit:hover {
-    background-color: #ddd;
-  }
-  
-  .TaskItem button.delete {
-    background-color: #f44336;
-    border-color: #f44336;
-    color: #fff;
-  }
-  
-  .TaskItem button.delete:hover {
-    background-color: #d32f2f;
-    border-color: #d32f2f;
-  }
-  
-  .TaskItem.completed {
-    opacity: 0.5;
-  }
-  
-  .TaskItem.completed h3 {
-    text-decoration: line-through;
-  }
-  
-  .TaskItem.completed p {
-    text-decoration: line-through;
-  }
+.task-details {
+  margin-right: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+.task-details input[type='checkbox'] {
+  margin-right: 10px;
+  transform: scale(1.5);
+}
+
+.task-details button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  margin-bottom: 10px;
+  align-items: center;
+  min-width: 85px;
+}
+
+.task-details button.detail {
+  background-color: #5db0f3;
+  margin-right: 10px;
+}
+
+.task-details button.detail:hover {
+  background-color: #1976d2;
+}
+
+.task-details button.remove {
+  background-color: #f44336;
+}
+
+.task-details button.remove:hover {
+  background-color: #d32f2f;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TaskForm from './TaskForm';
+import './TaskItem.css';
 
 function TaskItem({ task, onDeleteTask, onCheckboxChange, onFormSubmit }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -26,11 +27,17 @@ function TaskItem({ task, onDeleteTask, onCheckboxChange, onFormSubmit }) {
 
   return (
     <li className='TaskItem'>
-      <input type='checkbox' checked={task.isDone} onChange={handleCheckboxChange} />
       <div className='task-details'>
-        <h3>{task.title}</h3>
-        <button onClick={handleDetailsClick}>{showDetails ? 'Detail' : 'Detail'}</button>
-        <button onClick={handleDeleteClick}>Remove</button>
+        <div className='task-title'>
+          <div>
+            <input type='checkbox' checked={task.isDone} onChange={handleCheckboxChange} />
+            {task.title}
+          </div>
+          <div>
+            <button onClick={handleDetailsClick} className='detail'>{showDetails ? 'Detail' : 'Detail' }</button>
+            <button onClick={handleDeleteClick} className='remove'>Remove</button>
+          </div>
+        </div>
         {showDetails && (
           <div>
             <TaskForm task={task} onFormSubmit={handleUpdateClick} />

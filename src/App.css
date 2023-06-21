@@ -1,7 +1,15 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -15,43 +23,89 @@
   flex: 3;
   display: flex;
   flex-direction: column;
+  border-left: 1px solid #ccc;
+  position: relative;
 }
 
 .form-container {
   width: 80%;
   max-width: 400px;
+  margin: 0 auto;
 }
 
 .list-container {
   width: 80%;
   max-width: 700px;
+  margin: 0 auto;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px); /* adjust this */
+}
+
+.task-item {
+  font-size: 1rem; /* adjust this */
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item-title {
+  font-weight: bold;
 }
 
 .search-container {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    
-  }
+  padding: 0.5rem;
+  font-size: 13px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 97%;
+}
 
 .bulk-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
-  width: 100%;
+  align-items: center;
+  width: 97.3%;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 12px;
 }
 
 .bulk-actions button {
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #f6f6f6;
-  border: 1px solid #ddd;
-  color: #333;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  min-width: 104px;
 }
 
-.bulk-actions button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.bulk-actions button.done {
+  background-color: #0f79cf;
+  margin-right: 10px;
+}
+
+.bulk-actions button.done:hover {
+  background-color: #0f61b4;
+}
+
+.bulk-actions button.remove {
+  background-color: #f44336;
+}
+
+.bulk-actions button.remove:hover {
+  background-color: #d32f2f;
+}
+
+.list-container::-webkit-scrollbar {
+  width: 0;
 }
