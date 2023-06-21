@@ -1,0 +1,55 @@
+
+  .TaskForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .input-group label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-group input,
+  .input-group textarea,
+  .input-group select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .Date-Pri {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .Date-Pri .input-group:last-child {
+    margin-left: 1rem;
+  }
+  
+  .input-group input:focus,
+  .input-group textarea:focus,
+  .input-group select:focus {
+    outline: none;
+    border-color: #333;
+  }
+  
+  .TaskForm button[type='submit'] {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+  
+  .TaskForm button[type='submit']:hover {
+    background-color: #555;
+  }

@@ -1,127 +1,57 @@
-body {
-    background-color: #f8f8f8;
-    font-family: Arial, sans-serif;
-  }
-  .container {
-    display: flex;
-    width: 100%;
-  }
-  
-  .left {
-    flex-grow: 2;
-    flex-basis: 0;
-  }
-  
-  .right {
-    flex-grow: 3;
-    flex-basis: 0;
-  }
-  header {
-    color: #000000;
-    font-size: 12px;
-    text-align: center;
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+}
+
+.left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  width: 80%;
+  max-width: 400px;
+}
+
+.list-container {
+  width: 80%;
+  max-width: 700px;
+}
+
+.search-container {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    
   }
 
-  .Date-Pri {
-    display: flex;
-    width: 100%;
-  }
-  
-  .Date {
-    flex-grow: 1;
-    flex-basis: 0;
-    display: flex;
-    flex-direction: column;
-  }
+.bulk-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
 
-  .Priority {
-    flex-grow: 1;
-    flex-basis: 0;
-    display: flex;
-    flex-direction: column;
-  }
+.bulk-actions button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f6f6f6;
+  border: 1px solid #ddd;
+  color: #333;
+}
 
-
-  form {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 16px;
-    padding: 16px;
-  }
-  
-  form > h2 {
-    margin-top: 0;
-  }
-  
-  form > div {
-    margin-bottom: 16px;
-  }
-  
-  form > div > label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  form > div > input,
-  form > div > select {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    padding: 8px;
-    width: 100%;
-  }
-  
-  form > button {
-    background-color: #4caf50;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 16px;
-    padding: 8px 16px;
-  }
-  
-  ul {
-    list-style-type: none;
-    margin: 16px;
-    padding: 0;
-  }
-  
-  li {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    padding: 8px;
-  }
-  
-  li.completed {
-    background-color: #e0e0e0;
-  }
-  
-  li > input[type='checkbox'] {
-    margin-right: 8px;
-  }
-  
-  li > span {
-    margin-right: 8px;
-  }
-  
-  li > button {
-    background-color: #f44336;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 8px 16px;
-  }
-  
-  input[type='text'],
-  input[type='date'],
-  select {
-    outline: none;
-  }
+.bulk-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

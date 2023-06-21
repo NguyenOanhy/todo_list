@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './TaskForm.css';
 
-function TaskForm({ onFormSubmit }) {
+function TaskForm({ task, onFormSubmit }) {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -8,75 +9,78 @@ function TaskForm({ onFormSubmit }) {
     priority: 'normal',
   });
 
-  function handleFormChange(event) {
+  useEffect(() => {
+    if (task) {
+      setFormData(task);
+    }
+  }, [task]);
+
+  function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    onFormSubmit(formData.title, formData.description, formData.dueDate, formData.priority);
+    onFormSubmit(formData);
     setFormData({
-      title: formData.title,
-      description: formData.description,
-      dueDate: formData.dueDate,
-      priority: formData.priority,
+      title: '',
+      description: '',
+      dueDate: new Date().toISOString().slice(0, 10),
+      priority: 'normal',
     });
   }
 
   return (
-    <form onSubmit={handleSubmit} className='TaskForm'>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        placeholder='Add new task ...'
-        value={formData.title}
-        onChange={handleFormChange}
-        required
-      />
-      <div>
-        <div>Description</div>
+    <form className='TaskForm' onSubmit={handleSubmit}>
+      <div className='input-group'>
+        {/* <label htmlFor='title'>Title:</label> */}
+        <input
+          type='text'
+          id='title'
+          name='title'
+          value={formData.title}
+          onChange={handleInputChange}
+          placeholder='Add new task...'
+          required
+        />
+      </div>
+      <div className='input-group'>
+        <label htmlFor='description'>Description</label>
         <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleFormChange}
+          id='description'
+          name='description'
+          value={formData.description}
+          onChange={handleInputChange}
         />
       </div>
       <div className='Date-Pri'>
-        <div className='Date'>
-            <label htmlFor="dueDate">Due date</label>
-            <input
-                type="date"
-                id="dueDate"
-                name="dueDate"
-                value={formData.dueDate}
-                onChange={handleFormChange}
-                required
-                min={new Date().toISOString().slice(0, 10)}
-            />
+        <div className='input-group'>
+          <label htmlFor='dueDate'>Due Date</label>
+          <input
+            type='date'
+            id='dueDate'
+            name='dueDate'
+            value={formData.dueDate}
+            onChange={handleInputChange}
+            min={new Date().toISOString().slice(0, 10)}
+          />
         </div>
-
-        <div className='Priority'>
-            <label htmlFor="priority">Priority</label>
-            <select
-                id="priority"
-                name="priority"
-                value={formData.priority}
-                onChange={handleFormChange}
-            >
-                <option value="low">Low</option>
-                <option value="normal">Normal</option>
-                <option value="high">High</option>
-            </select>
+        <div className='input-group'>
+          <label htmlFor='priority'>Priority</label>
+          <select
+            id='priority'
+            name='priority'
+            value={formData.priority}
+            onChange={handleInputChange}
+          >
+            <option value='low'>Low</option>
+            <option value='normal'>Normal</option>
+            <option value='high'>High</option>
+          </select>
         </div>
       </div>
-
-      <button type="submit">Add</button>
+      <button type='submit'>{task ? 'Update Task' : 'Add Task'}</button>
     </form>
   );
 }

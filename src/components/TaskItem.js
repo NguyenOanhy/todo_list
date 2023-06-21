@@ -1,33 +1,43 @@
 import React, { useState } from 'react';
+import TaskForm from './TaskForm';
 
-function TaskItem({ task, onDeleteTask, onCheckboxChange }) {
-  const [isChecked, setIsChecked] = useState(false);
+function TaskItem({ task, onDeleteTask, onCheckboxChange, onFormSubmit }) {
+  const [showDetails, setShowDetails] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
-  function handleCheckboxChange() {
-    setIsChecked((prevIsChecked) => !prevIsChecked);
-    onCheckboxChange(task.id);
-  }
-
-  function handleDeleteTask() {
+  function handleDeleteClick() {
     onDeleteTask(task.id);
   }
 
+  function handleCheckboxChange() {
+    onCheckboxChange(task.id);
+  }
+
+  function handleDetailsClick() {
+    setShowDetails(!showDetails);
+    setShowForm(false);
+  }
+
+  function handleUpdateClick(newTask) {
+    setShowDetails(false);
+    setShowForm(false);
+    onFormSubmit(newTask);  
+  }
+
   return (
-    <li className={isChecked ? 'checked' : ''}>
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-      />
-      <div className="task-info">
+    <li className='TaskItem'>
+      <input type='checkbox' checked={task.isDone} onChange={handleCheckboxChange} />
+      <div className='task-details'>
         <h3>{task.title}</h3>
-        {/* <p>{task.description}</p>
-        <p>Due date: {task.dueDate}</p>
-        <p>Priority: {task.priority}</p> */}
+        <button onClick={handleDetailsClick}>{showDetails ? 'Detail' : 'Detail'}</button>
+        <button onClick={handleDeleteClick}>Remove</button>
+        {showDetails && (
+          <div>
+            <TaskForm task={task} onFormSubmit={handleUpdateClick} />
+          </div>
+        )}
       </div>
-      <button className="delete-btn" onClick={handleDeleteTask}>
-        Delete
-      </button>
+      
     </li>
   );
 }

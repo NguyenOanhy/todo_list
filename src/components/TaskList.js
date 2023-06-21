@@ -1,23 +1,19 @@
+// TaskList.js
+
 import React from 'react';
 import TaskItem from './TaskItem';
+import './TaskList.css'
 
-function TaskList({ tasks, onDeleteTask, onCheckboxChange }) {
-  function handleDeleteTask(taskId) {
-    onDeleteTask(taskId);
-  }
-
-  function handleCheckboxChange(taskId) {
-    onCheckboxChange(taskId);
-  }
-
+function TaskList({ tasks, onDeleteTask, onCheckboxChange, onFormSubmit }) {
   return (
-    <ul>
+    <ul className='TaskList'>
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
           task={task}
-          onDeleteTask={handleDeleteTask}
-          onCheckboxChange={handleCheckboxChange}
+          onDeleteTask={onDeleteTask}
+          onCheckboxChange={onCheckboxChange}
+          onFormSubmit={onFormSubmit}
         />
       ))}
     </ul>
