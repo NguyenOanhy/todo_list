@@ -4,7 +4,7 @@ import './App.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
-  const [selectedTasks, setSelectedTasks] = useState([]);
+  // const [selectedTasks, setSelectedTasks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -21,6 +21,9 @@ const App = () => {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   }, [tasks]);
+
+  const shouldRenderBulkActions = tasks.some(task => task.isDone);
+
 
   const handleFormSubmit = (formData) => {
   const newTask = {
@@ -44,7 +47,7 @@ const App = () => {
 
   const handleDeleteTask = (taskId) => {
     setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
-    setSelectedTasks(selectedTasks.filter(id => id !== taskId));
+    // setSelectedTasks(selectedTasks.filter(id => id !== taskId));
   
     try {
       const storedTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -64,12 +67,12 @@ const App = () => {
     newTasks[taskIndex] = { ...task, isDone: !task.isDone };
     setTasks(newTasks);
 
-    const selectedTaskIndex = selectedTasks.indexOf(taskId);
-    if (selectedTaskIndex === -1) {
-      setSelectedTasks([...selectedTasks, taskId]);
-    } else {
-      setSelectedTasks(selectedTasks.filter(id => id !== taskId));
-    }
+    // const selectedTaskIndex = selectedTasks.indexOf(taskId);
+    // if (selectedTaskIndex === -1) {
+    //   setSelectedTasks([...selectedTasks, taskId]);
+    // } else {
+    //   setSelectedTasks(selectedTasks.filter(id => id !== taskId));
+    // }
   }
   const handleUpdateTask = (newTask) => {
     const updatedTasks = tasks.map((task) =>
@@ -78,10 +81,22 @@ const App = () => {
     setTasks(updatedTasks);
   }
 
+  // const handleBulkDelete = () => {
+  //   const newTasks = tasks.filter(task => !selectedTasks.includes(task.id));
+  //   setTasks(newTasks);
+  //   setSelectedTasks([]);
+  // }
+
   const handleBulkDelete = () => {
-    const newTasks = tasks.filter(task => !selectedTasks.includes(task.id));
+    const newTasks = tasks.filter(task => !task.isDone);
     setTasks(newTasks);
-    setSelectedTasks([]);
+    // setSelectedTasks([]);
+  
+    try {
+      localStorage.setItem('tasks', JSON.stringify(newTasks));
+    } catch (error) {
+      console.error('Error updating local storage:', error);
+    }
   }
 
   const handleSearch = (event) => {
@@ -112,7 +127,7 @@ const App = () => {
               onFormSubmit={handleUpdateTask}
             />
           </div>
-          {selectedTasks.length > 0 && (
+          {shouldRenderBulkActions && (
             <div className="bulk-actions">
               <div>Bulk Action:</div>
               <div>
