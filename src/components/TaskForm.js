@@ -33,7 +33,7 @@ function TaskForm({ task, onFormSubmit }) {
 
   return (
     <form className='TaskForm' onSubmit={handleSubmit}>
-      <div className='input-group'>
+      <div className='input-group title'>
         <input
           type='text'
           id='title'

@@ -29,11 +29,11 @@ function TaskItem({ task, onDeleteTask, onCheckboxChange, onFormSubmit }) {
     <li className='TaskItem'>
       <div className='task-details'>
         <div className='task-title'>
-          <div>
+          <div className='task-check'>
             <input type='checkbox' checked={task.isDone} onChange={handleCheckboxChange} />
-            {task.title}
+            <div className='title'>{task.title}</div>
           </div>
-          <div>
+          <div className='task-button'>
             <button onClick={handleDetailsClick} className='detail'>{showDetails ? 'Detail' : 'Detail' }</button>
             <button onClick={handleDeleteClick} className='remove'>Remove</button>
           </div>

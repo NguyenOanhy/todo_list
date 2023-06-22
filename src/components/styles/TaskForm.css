@@ -24,8 +24,13 @@
 .input-group textarea,
 .input-group select {
   padding: 0.5rem;
-  border: 2px solid #ccc;
+  border: 2px solid #000;
+  /* border-radius: 4px; */
+}
+
+.input-group #title {
   border-radius: 4px;
+  border: 2px solid #ccc;
 }
 
 .Date-Pri {
@@ -58,7 +63,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #008000;
+  background-color: #1b891b;
   border: none;
   color: #fff;
   font-size: 1.2rem;
@@ -66,5 +71,5 @@
 }
 
 .TaskForm button[type='submit']:hover {
-  background-color: #555;
+  background-color: #0b600b;
 }

@@ -1,6 +1,15 @@
+.TaskItem {
+  margin-top: 20px;
+}
+
 .task-details {
   margin-right: 10px;
   justify-content: space-between;
+  align-items: center;
+}
+
+.task-details .task-button {
+  display: flex;
   align-items: center;
 }
 
@@ -12,10 +21,23 @@
   font-size: 18px;
 }
 
+.task-title .task-check {
+  display: flex;
+}
+
+.task-title .task-check .title{
+  padding-left: 8px;
+}
+
 .task-details input[type='checkbox'] {
   margin-right: 10px;
   transform: scale(1.5);
 }
+
+input[type="checkbox"]:checked{
+  background-color: white;
+}
+
 
 .task-details button {
   padding: 8px 16px;
@@ -24,6 +46,7 @@
   font-size: 14px;
   color: #fff;
   border: none;
+  margin-top: 10px;
   margin-bottom: 10px;
   align-items: center;
   min-width: 85px;
