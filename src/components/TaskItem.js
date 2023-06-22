@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import TaskForm from './TaskForm';
 import './styles/TaskItem.css';
 
-function TaskItem({ task, onDeleteTask, onCheckboxChange, onFormSubmit }) {
+const TaskItem = ({ task, onDeleteTask, onCheckboxChange, onFormSubmit }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
-  function handleDeleteClick() {
+  const handleDeleteClick = () => {
     onDeleteTask(task.id);
   }
 
-  function handleCheckboxChange() {
+  const handleCheckboxChange = () => {
     onCheckboxChange(task.id);
   }
 
-  function handleDetailsClick() {
+  const handleDetailsClick = () => {
     setShowDetails(!showDetails);
     setShowForm(false);
   }
 
-  function handleUpdateClick(newTask) {
+  const handleUpdateClick = (newTask) =>  {
     setShowDetails(false);
     setShowForm(false);
     onFormSubmit(newTask);  

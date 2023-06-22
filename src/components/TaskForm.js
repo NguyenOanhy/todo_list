@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles/TaskForm.css';
 
-function TaskForm({ task, onFormSubmit }) {
+const TaskForm = ({ task, onFormSubmit }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -15,12 +15,12 @@ function TaskForm({ task, onFormSubmit }) {
     }
   }, [task]);
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmit(formData);
     setFormData({

@@ -2,7 +2,7 @@ import React from 'react';
 import TaskItem from './TaskItem';
 import './styles/TaskList.css'
 
-function TaskList({ tasks, onDeleteTask, onCheckboxChange, onFormSubmit }) {
+const TaskList = ({ tasks, onDeleteTask, onCheckboxChange, onFormSubmit }) => {
   return (
     <ul className='TaskList'>
       {tasks.map((task) => (

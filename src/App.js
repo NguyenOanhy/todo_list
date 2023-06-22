@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Header, TaskForm, TaskList } from './components';
 import './App.css';
 
-function App() {
+const App = () => {
   const [tasks, setTasks] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,7 +22,7 @@ function App() {
     }
   }, [tasks]);
 
-  function handleFormSubmit(formData) {
+  const handleFormSubmit = (formData) => {
   const newTask = {
     id: Date.now(),
     title: formData.title,
@@ -41,11 +41,8 @@ function App() {
   }
 }
 
-  // function handleDeleteTask(taskId) {
-  //   setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
-  //   setSelectedTasks(selectedTasks.filter(id => id !== taskId));
-  // }
-  function handleDeleteTask(taskId) {
+
+  const handleDeleteTask = (taskId) => {
     setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
     setSelectedTasks(selectedTasks.filter(id => id !== taskId));
   
@@ -60,7 +57,7 @@ function App() {
     }
   }
 
-  function handleCheckboxChange(taskId) {
+  const handleCheckboxChange = (taskId) => {
     const taskIndex = tasks.findIndex(task => task.id === taskId);
     const task = tasks[taskIndex];
     const newTasks = [...tasks];
@@ -74,20 +71,20 @@ function App() {
       setSelectedTasks(selectedTasks.filter(id => id !== taskId));
     }
   }
-  function handleUpdateTask(newTask) {
+  const handleUpdateTask = (newTask) => {
     const updatedTasks = tasks.map((task) =>
       task.id === newTask.id ? newTask : task
     );
     setTasks(updatedTasks);
   }
 
-  function handleBulkDelete() {
+  const handleBulkDelete = () => {
     const newTasks = tasks.filter(task => !selectedTasks.includes(task.id));
     setTasks(newTasks);
     setSelectedTasks([]);
   }
 
-  function handleSearch(event) {
+  const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   }
 
